@@ -194,25 +194,26 @@
     const inlineError = document.getElementById('inlineError');
     const modal = document.getElementById('errorModal');
     const closeBtn = document.getElementById('closeBtn');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  inlineError.textContent = '';
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      inlineError.textContent = '';
+  const first = document.getElementById('firstName').value.trim();
+  const last  = document.getElementById('lastName').value.trim();
 
-      const first = document.getElementById('firstName').value.trim();
-      const last  = document.getElementById('lastName').value.trim();
+  if (!first || !last) {
+    inlineError.textContent = 'Aishat, please fill in the data to continue';
+    return;
+  }
 
-      if (!first || !last) {
-        inlineError.textContent = 'Aishat, please fill in the data to continue';
-        return;
-      }
+  // Compare lowercase versions
+  if (first.toLowerCase() === 'eniola' && last.toLowerCase() === 'aishat') {
+    window.location.href = 'main.html';
+  } else {
+    modal.style.display = 'flex';
+    closeBtn.focus();
+  }
 
-      if (first.toLowerCase() === 'Eniola' && last.toLowerCase() === 'Aishat') {
-        window.location.href = 'main.html';
-      } else {
-        modal.style.display = 'flex';
-        closeBtn.focus();
-      }
     });
 
     closeBtn.addEventListener('click', function() {
