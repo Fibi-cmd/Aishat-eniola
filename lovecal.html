@@ -151,6 +151,20 @@
   <audio id="sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3"></audio>
 
   <script>
+    // Array of funny/cute random love results
+    const funnyLoveResults = [
+      "💘 Your love score is 101% – System overloaded with sweetness!",
+      "❤️ Love detected: Infinity ♾️",
+      "💕 You + Me = Perfect Equation",
+      "😂 Warning: Too much cuteness to calculate!",
+      "🌌 Love Level: Out of this Galaxy!",
+      "😘 Result: You own my calculator and my heart",
+      "💓 Equation Solved: We = Forever",
+      "😊 Your smile just divided my worries to zero",
+      "🔥 Passion Index: Off the charts!",
+      "💔 Error 404 – Can’t find anyone else but you!"
+    ];
+
     function startAnalysis() {
       const name1 = document.getElementById('name1').value.trim().toLowerCase();
       const name2 = document.getElementById('name2').value.trim().toLowerCase();
@@ -199,19 +213,25 @@
           let rotation = (compatibility * 1.8) - 90;
           needle.style.transform = `rotate(${rotation}deg)`;
 
+          // Pick random funny love result
+          const funnyMessage = funnyLoveResults[Math.floor(Math.random() * funnyLoveResults.length)];
+
           let resultHTML = `
             <h3>ANALYSIS COMPLETE</h3>
             <p>COMPATIBILITY MATRIX: ${compatibility}%</p>
             <p>EMOTIONAL SYNC: ${Math.floor(Math.random() * 41) + 60}%</p>
             <p>LONG-TERM POTENTIAL: ${Math.floor(Math.random() * 41) + 60}%</p>
             <p>STATUS: ${compatibility > 75 ? 'OPTIMAL MATCH' : 'REQUIRES FURTHER ANALYSIS'}</p>
+            <div class="special-message"><p>${funnyMessage}</p></div>
           `;
 
           if (isHarunaAishatPair) {
             resultHTML += `
               <div class="special-message">
                 <h3>Aishat, congratulations!</h3>
-                <p>You are in Love with Haruna ❤️😊</p>
+                <p>Your love score is 101% 💖 Overloaded with sweetness!
+    <br Love detected: Infinity ❤️♾️</br>
+    "You + Me = Perfect Equation 💕😊</p>
               </div>
             `;
           } else if (isWithSomeoneElse) {
